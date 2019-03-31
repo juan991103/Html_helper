@@ -1,4 +1,5 @@
-﻿using System;
+﻿using html_helper.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -15,9 +16,17 @@ namespace html_helper.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
+            Persona obj = new Persona();
+            obj.Cedula = Convert.ToInt32(Request.Form["Cedula"]);
+            obj.Nombre = (Request.Form["Nombre"]).ToString();
+            obj.Apellido = (Request.Form["Apellido"]).ToString();
+            obj.Edad = Convert.ToInt32(Request.Form["Edad"]);
+            obj.Telefono = (Request.Form["Telefono"]).ToString();
+            obj.Correo = (Request.Form["Correo"]).ToString();
+            obj.Genero = (Request.Form["Genero"]).ToString();
+            obj.EstadoCivil = (Request.Form["EstadoCivil"]).ToString();
+            //obj.Hobbys = (Request.Form["Hobbys"]).ToString();
+            return View(obj);
         }
 
         public ActionResult Contact()
